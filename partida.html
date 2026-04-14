@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Partida | Tênis</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <script src="https://www.gstatic.com/firebasejs/12.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.12.0/firebase-analytics-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.12.0/firebase-database-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="app">
+      <div class="topbar">
+        <div class="header-row">
+          <div>
+            <span class="badge">Partida ao vivo</span>
+            <h1 id="tituloPartida">Partida</h1>
+            <small id="subtituloPartida">Carregando dados da partida...</small>
+            <div style="margin-top: 6px;">
+              <small id="formatoPreview">-</small>
+            </div>
+            <div style="margin-top: 6px;">
+              <span class="match-status-pill new" id="statusPreview">Não iniciada</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div id="mensagemErro" class="card muted message-box" style="display:none;"></div>
+
+        <div class="scoreboard">
+          <!-- JOGADOR 2 -->
+          <section class="scorecard scorecard-top" id="cardJogador2">
+            <div class="scorecard-head">
+              <div class="player-meta">
+                <small>Jogador 2</small>
+                <input id="jogador2" type="text" class="player-name-input" placeholder="Nome do jogador 2" />
+              </div>
+            </div>
+
+            <div class="scoreboard-row">
+              <div class="score-actions">
+                <button class="score-btn minus" data-action="g2-">−</button>
+              </div>
+
+              <div class="score-value-wrap">
+                <div class="score-label">Games</div>
+                <input id="scoreGames2" type="number" min="0" value="0" class="score-value" />
+              </div>
+
+              <div class="score-actions">
+                <button class="score-btn plus" data-action="g2+">+</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- JOGADOR 1 -->
+          <section class="scorecard scorecard-bottom" id="cardJogador1">
+            <div class="scorecard-head">
+              <div class="player-meta">
+                <small>Jogador 1</small>
+                <input id="jogador1" type="text" class="player-name-input" placeholder="Nome do jogador 1" />
+              </div>
+            </div>
+
+            <div class="scoreboard-row">
+              <div class="score-actions">
+                <button class="score-btn minus" data-action="g1-">−</button>
+              </div>
+
+              <div class="score-value-wrap">
+                <div class="score-label">Games</div>
+                <input id="scoreGames1" type="number" min="0" value="0" class="score-value" />
+              </div>
+
+              <div class="score-actions">
+                <button class="score-btn plus" data-action="g1+">+</button>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="card live-panel">
+          <div class="live-panel-top">
+            <div>
+              <span class="section-title">Controle da partida</span>
+              <div class="live-timer-box">
+                <span class="timer-label">Duração</span>
+                <span id="cronometro" class="timer-value">00:00:00</span>
+              </div>
+            </div>
+
+            <div class="live-actions-right">
+              <button class="btn start" data-action="iniciar" id="btnIniciar">
+                Iniciar partida
+              </button>
+            </div>
+          </div>
+
+          <div class="live-actions-grid">
+            <button class="btn" data-action="zerar">Zerar placar</button>
+            <button class="btn danger" data-action="encerrar">Encerrar partida</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <span>Atualização em tempo real via Firebase</span>
+        <span>Controle da partida individual</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/partida.js"></script>
+</body>
+</html>

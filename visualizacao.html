@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visualização das Partidas</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <script src="https://www.gstatic.com/firebasejs/12.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.12.0/firebase-analytics-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.12.0/firebase-database-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="app">
+      <div class="topbar">
+        <div class="header-row">
+          <div>
+            <h1>Visualização Geral</h1>
+            <small>Partidas em andamento e finalizadas em tempo real</small>
+          </div>
+
+          <div class="badge">
+            <span class="dot"></span>
+            AO VIVO
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="visualizacao-grid">
+          <!-- PARTIDAS EM ANDAMENTO -->
+          <section class="visualizacao-col">
+            <div class="col-header">
+              <h2>Partidas em andamento</h2>
+              <span class="col-counter" id="contadorAtivas">0</span>
+            </div>
+
+            <div id="colAtivas" class="col-list"></div>
+          </section>
+
+          <!-- PARTIDAS FINALIZADAS -->
+          <section class="visualizacao-col">
+            <div class="col-header">
+              <h2>Partidas finalizadas</h2>
+              <span class="col-counter" id="contadorEncerradas">0</span>
+            </div>
+
+            <div id="colEncerradas" class="col-list"></div>
+          </section>
+        </div>
+      </div>
+
+      <div class="footer">
+        <span>Visualização pública</span>
+        <span>Atualização em tempo real via Firebase</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/visualizacao.js"></script>
+</body>
+</html>

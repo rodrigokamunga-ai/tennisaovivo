@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin | Partidas de Tênis</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <script src="https://www.gstatic.com/firebasejs/12.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.12.0/firebase-analytics-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.12.0/firebase-database-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="app">
+      <div class="topbar">
+        <div class="header-row">
+          <div>
+            <span class="badge">Firebase Realtime Database</span>
+            <h1>Painel Administrativo</h1>
+            <small>Cadastro, edição, exclusão e gerenciamento das partidas</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="grid cols-2">
+          <div class="card">
+            <span class="section-title">Dados da partida</span>
+
+            <div class="grid cols-2">
+              <div>
+                <small>Nome da categoria</small>
+                <input id="categoriaNome" type="text" placeholder="Ex.: ATP 250" />
+              </div>
+
+              <div>
+                <small>Data do jogo</small>
+                <input id="dataJogo" type="date" />
+              </div>
+
+              <div>
+                <small>Nome da quadra</small>
+                <input id="nomeQuadra" type="text" placeholder="Ex.: Quadra Central" />
+              </div>
+
+              <div>
+                <small>Fase do torneio</small>
+                <input id="faseTorneio" type="text" placeholder="Ex.: Quartas de final" />
+              </div>
+
+              <div>
+                <small>Formato da partida</small>
+                <select id="formatoJogo">
+                  <option value="2_sets_adv_3tb10">2 sets com vantagem + 3º set em super tiebreak de 10</option>
+                  <option value="2_sets_noad_3tb10">2 sets sem vantagem + 3º set em super tiebreak de 10</option>
+                  <option value="1_set_adv_tb10">1 set com vantagem + tiebreak de 10</option>
+                  <option value="1_set_adv_tb7">1 set com vantagem + tiebreak de 7</option>
+                  <option value="1_set_noad_tb7">1 set sem vantagem + tiebreak de 7</option>
+                  <option value="1_set_pro_8_adv_tb7">Pro set de 8 games com vantagem + tiebreak de 7</option>
+                  <option value="1_set_pro_8_noad_tb7">Pro set de 8 games sem vantagem + tiebreak de 7</option>
+                </select>
+              </div>
+
+              <div>
+                <small>Status</small>
+                <select id="status">
+                  <option>Não iniciada</option>
+                  <option>Em andamento</option>
+                  <option>Suspensa</option>
+                  <option>Concluída</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid cols-3" style="margin-top: 12px;">
+              <button id="btnSalvar" class="btn primary">Salvar / Atualizar</button>
+              <button id="btnLimpar" class="btn warning">Limpar</button>
+              <button id="btnNova" class="btn">Nova partida</button>
+            </div>
+
+            <div style="margin-top: 12px;">
+              <a class="btn info" href="visualizacao.html">Abrir visualização</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 14px;">
+          <div class="header-row" style="margin-bottom: 12px;">
+            <div>
+              <span class="section-title">Partidas cadastradas</span>
+              <small>Salvar, editar, excluir, abrir e copiar links</small>
+            </div>
+
+            <div class="pills">
+              <span class="pill new">Todas</span>
+              <span class="pill live">Em andamento</span>
+              <span class="pill done">Concluídas</span>
+            </div>
+          </div>
+
+          <div class="matches-list-header">
+            <div>Categoria</div>
+            <div>Data</div>
+            <div>Quadra</div>
+            <div>Fase</div>
+            <div>Formato</div>
+            <div>Status</div>
+            <div>Link</div>
+            <div>Ações</div>
+          </div>
+
+          <div id="tbodyPartidas" class="matches-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>
