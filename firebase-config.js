@@ -1,3 +1,4 @@
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyA62zcxaJy5s69MyMpi8zJa1Sb3Fa0puyc",
   authDomain: "livescoretennis-56d2c.firebaseapp.com",
@@ -8,8 +9,3 @@ const firebaseConfig = {
   appId: "1:180506351011:web:08d7284a9e38b64289b616",
   measurementId: "G-XC19JXXEC7"
 };
-
-firebase.initializeApp(firebaseConfig);
-
-const db = firebase.database();
-window.db = db;
